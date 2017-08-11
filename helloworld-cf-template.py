@@ -10,7 +10,7 @@ from troposphere import (
 )
 from pprint import pprint
 
-ApplicationPort = "8080"
+ApplicationPort = "3000"
 
 t = Template()
 
