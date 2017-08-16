@@ -86,6 +86,20 @@ t.add_resource(InstanceProfile(
     Roles=[Ref("Role")]
 ))
 
+t.add_resource(IAMPolicy("Policy",
+    PolicyName="AllowCodePipeline",
+    PolicyDocument=Policy(
+        Statement=[
+            Statement(
+                Effect=Allow,
+                Action=[Action("codepipeline", "*")],
+                Resource=["*"]
+            )
+        ]
+    ),
+    Roles=[Ref("Role")]
+))
+
 t.add_resource(ec2.Instance("instance",
                             ImageId="ami-a4c7edb2",
                             InstanceType="t2.micro",
